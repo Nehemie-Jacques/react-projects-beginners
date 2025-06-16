@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./style.css";
 
 function generateId() {
-    return Math.floor(Math.random() * 10);
+    return Math.floor(Math.random() * 1000000);
 }
 
 function Todo() {
@@ -11,7 +11,7 @@ function Todo() {
 
     const handleSubmit = () => {
         setTodos((todos) =>
-            todos.concat({
+            todos.concat({ // crée une nouvelle liste avec un objet en plus.
                 text: input,
                 id: generateId(),
             })
@@ -28,14 +28,13 @@ function Todo() {
             <input 
               type="text"
               value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="New Todo" 
+              onChange={(e) => setInput(e.target.value)} // à chaque frappe, on met à jour input avec ce que tape l’utilisateur.
             />
 
             <button onClick={handleSubmit}>Submit</button>
 
             <ul className="todos-list">
-                {todos.map(({ text, id }) => (
+                {todos.map(({ text, id }) => ( //  on parcourt la liste des tâches, pour chaque tache, on affiche le texte et le bouton de suppression
                     <li key={id} className="todo">
                         <span>{text}</span>
                         <button className="close" onClick={() => removeTodo(id)}>x</button>

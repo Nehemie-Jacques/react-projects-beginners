@@ -1,4 +1,4 @@
 import { createRoot } from 'react-dom/client'
-import App from '../todo/App.jsx'
+import App from '../Meals API Project/App.jsx'
 
 createRoot(document.getElementById('root')).render(<App />)
